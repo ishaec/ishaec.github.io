@@ -1,476 +1,187 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Zakeesha's Portfolio</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Zakeesha's Portfolio</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+  <style>
+    *{margin:0;padding:0;box-sizing:border-box}
+    body{font-family:"Poppins",sans-serif;background:linear-gradient(135deg,#87cefa,#fff);color:#333;overflow-x:hidden}
+    h1,h2{color:#004080;margin-bottom:1rem}
+    p{line-height:1.6}
 
-        body {
-            font-family: "Poppins", sans-serif;
-            background: linear-gradient(135deg, #87cefa, #ffffff);
-            color: #333;
-            overflow-x: hidden;
-        }
+    /* Navbar */
+    .navbar{background:rgba(255,255,255,.2)!important;backdrop-filter:blur(15px)}
+    .navbar-brand{font-size:1.4rem;color:#004080!important;text-shadow:0 1px 2px rgba(255,255,255,.6)}
+    .navbar-brand img{width:35px;height:35px;border-radius:8px;margin-right:8px}
+    .nav-link{color:#004080!important;font-weight:600;margin-left:1rem;transition:.3s}
+    .nav-link:hover{color:#1e90ff!important;transform:translateY(-2px)}
 
-        nav {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            background: rgba(255, 255, 255, 0.2);
-            backdrop-filter: blur(15px);
-            display: flex;
-            justify-content: center;
-            padding: 1rem;
-            z-index: 1000;
-        }
+    /* Sections */
+    section{min-height:100vh;display:flex;align-items:center;justify-content:center;padding:2rem;text-align:center}
+    .glass{background:rgba(255,255,255,.2);backdrop-filter:blur(15px);border-radius:20px;padding:2rem;max-width:800px;width:90%;box-shadow:0 4px 20px rgba(0,0,0,.1);margin:auto;opacity:0;transform:translateY(40px);transition:all 1s}
+    .glass.visible{opacity:1;transform:translateY(0)}
 
-        nav a {
-            color: #004080;
-            margin: 0 20px;
-            text-decoration: none;
-            font-weight: bold;
-            font-size: 1rem;
-            transition: color 0.3s ease;
-        }
+    /* Cards */
+    .card{background:rgba(255,255,255,.25);backdrop-filter:blur(10px);border-radius:15px;padding:1.5rem;box-shadow:0 2px 10px rgba(0,0,0,.1);transition:.3s;opacity:0;transform:translateY(40px)}
+    .card.visible{opacity:1;transform:translateY(0)}
+    .card:hover{transform:translateY(-10px)}
 
-        nav a:hover {
-            color: #1e90ff;
-        }
+    /* Profile */
+    .profile-img{width:150px;height:150px;border-radius:50%;margin-bottom:20px;box-shadow:0 4px 10px rgba(0,0,0,.2);opacity:0;transform:scale(.8);transition:1s}
+    .profile-img.visible{opacity:1;transform:scale(1)}
 
-        section {
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 2rem;
-            text-align: center;
-        }
+    /* Contact */
+    .contact-links a{display:inline-block;margin:10px;padding:10px 20px;background:#1e90ff;color:#fff;border-radius:25px;text-decoration:none;transition:.3s}
+    .contact-links a:hover{background:#004080}
+    .contact-links a i{margin-right:8px}
 
-        .glass {
-            background: rgba(255, 255, 255, 0.2);
-            backdrop-filter: blur(15px);
-            border-radius: 20px;
-            padding: 2rem;
-            max-width: 800px;
-            width: 90%;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-            margin: 1rem auto;
-            opacity: 0;
-            transform: translateY(40px);
-            transition: all 1s ease;
-        }
+    /* Responsive font */
+    .about-text{font-size:1.1rem}
+    @media(max-width:992px){.about-text{font-size:1rem}}
+    @media(max-width:768px){.about-text{font-size:.9rem}}
+    @media(max-width:576px){.about-text{font-size:.85rem}}
 
-        .glass.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
+    /* Portfolio */
+    #portfolio .card{margin:auto;max-width:400px}
 
-        h1,
-        h2 {
-            color: #004080;
-            margin-bottom: 1rem;
-        }
-
-        p {
-            color: #333;
-            line-height: 1.6;
-        }
-
-        .portfolio-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 1.5rem;
-            margin-top: 2rem;
-        }
-
-        .card {
-            background: rgba(255, 255, 255, 0.25);
-            backdrop-filter: blur(10px);
-            padding: 1.5rem;
-            border-radius: 15px;
-            transition: transform 0.3s ease;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-            opacity: 0;
-            transform: translateY(40px);
-            transition: all 1s ease;
-        }
-
-        .card.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        .card:hover {
-            transform: translateY(-10px);
-        }
-
-        .profile-img {
-            width: 150px;
-            height: 150px;
-            border-radius: 50%;
-            margin-bottom: 20px;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-            opacity: 0;
-            transform: scale(0.8);
-            transition: all 1s ease;
-        }
-
-        .profile-img.visible {
-            opacity: 1;
-            transform: scale(1);
-        }
-
-        .contact-links a {
-            display: inline-block;
-            margin: 10px;
-            padding: 10px 20px;
-            background: #1e90ff;
-            color: white;
-            border-radius: 25px;
-            text-decoration: none;
-            transition: background 0.3s ease;
-        }
-
-        .contact-links a:hover {
-            background: #004080;
-        }
-
-        @media (max-width: 768px) {
-            nav {
-                flex-wrap: wrap;
-            }
-
-            nav a {
-                margin: 10px;
-            }
-        }
-
-        footer {
-            background: rgba(255, 255, 255, 0.2);
-            backdrop-filter: blur(15px);
-            color: #004080;
-            padding: 2rem 1rem;
-            margin-top: 2rem;
-        }
-
-        .footer-container {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: space-between;
-            max-width: 1100px;
-            margin: auto;
-            gap: 2rem;
-        }
-
-        .footer-section {
-            flex: 1;
-            min-width: 250px;
-        }
-
-        .footer-section h3 {
-            margin-bottom: 1rem;
-            color: #1e90ff;
-        }
-
-        .footer-section ul {
-            list-style: none;
-        }
-
-        .footer-section ul li {
-            margin-bottom: 0.5rem;
-        }
-
-        .footer-section ul li a {
-            text-decoration: none;
-            color: #004080;
-            transition: color 0.3s ease;
-        }
-
-        .footer-section ul li a:hover {
-            color: #1e90ff;
-        }
-
-        .social-icons a {
-            font-size: 1.5rem;
-            margin-right: 15px;
-            text-decoration: none;
-            color: #004080;
-            transition: color 0.3s ease;
-        }
-
-        .social-icons a:hover {
-            color: #1e90ff;
-        }
-
-        .footer-bottom {
-            text-align: center;
-            margin-top: 2rem;
-            border-top: 1px solid rgba(0, 64, 128, 0.2);
-            padding-top: 1rem;
-            font-size: 0.9rem;
-        }
-
-        .contact-links a i {
-            margin-right: 8px;
-            font-size: 18px;
-        }
-
-        nav {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            background: rgba(255, 255, 255, 0.2);
-            backdrop-filter: blur(15px);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 1rem;
-            z-index: 1000;
-        }
-
-        nav .logo {
-            position: absolute;
-            left: 20px;
-            display: flex;
-            align-items: center;
-            font-weight: bold;
-            font-size: 1.2rem;
-            color: #004080;
-            text-decoration: none;
-        }
-
-        nav .logo img {
-            height: 40px;
-            width: 40px;
-            margin-right: 10px;
-            border-radius: 8px;
-        }
-
-        .navbar .navbar-brand {
-            font-size: 1.4rem;
-            color: #004080 !important;
-            text-shadow: 0 1px 2px rgba(255, 255, 255, 0.6);
-        }
-
-        .navbar .nav-link {
-            color: #004080 !important;
-            font-weight: 600;
-            margin-left: 1rem;
-            transition: color 0.3s ease, transform 0.2s ease;
-        }
-
-        .navbar .nav-link:hover {
-            color: #1e90ff !important;
-            transform: translateY(-2px);
-        }
-    </style>
+    /* Footer */
+    footer{background:rgba(255,255,255,.2);backdrop-filter:blur(15px);color:#004080;padding:2rem 1rem;margin-top:2rem}
+    .footer-container{display:flex;flex-wrap:wrap;justify-content:space-between;max-width:1100px;margin:auto;gap:2rem}
+    .footer-section{flex:1;min-width:250px}
+    .footer-section h3{margin-bottom:1rem;color:#1e90ff}
+    .footer-section ul{list-style:none;padding:0}
+    .footer-section a{text-decoration:none;color:#004080;transition:.3s}
+    .footer-section a:hover{color:#1e90ff}
+    .social-icons a{font-size:1.5rem;margin-right:15px;color:#004080;transition:.3s}
+    .social-icons a:hover{color:#1e90ff}
+    .footer-bottom{text-align:center;margin-top:2rem;border-top:1px solid rgba(0,64,128,.2);padding-top:1rem;font-size:.9rem}
+  </style>
 </head>
 
 <body>
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg fixed-top shadow-sm">
+    <div class="container">
+      <a class="navbar-brand fw-bold" href="#">
+        <img src="logo.png" alt="Logo"> ishaec;
+      </a>
+      <button class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbarNav"><span class="navbar-toggler-icon"></span></button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item"><a class="nav-link active" href="#home">Home</a></li>
+          <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
+          <li class="nav-item"><a class="nav-link" href="#cv">CV</a></li>
+          <li class="nav-item"><a class="nav-link" href="#portfolio">Portfolio</a></li>
+          <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
 
-    <nav class="navbar navbar-expand-lg fixed-top shadow-sm"
-        style="background: rgba(255, 255, 255, 0.2); backdrop-filter: blur(15px);">
-        <div class="container">
-            <a class="navbar-brand fw-bold text-primary" href="#">
-                <img src="logo.png" alt="Logo" width="35" height="35" class="me-2">
-                ishaec;
-            </a>
+  <!-- Home -->
+  <section id="home">
+    <div class="glass">
+      <img src="images/me.jpg" alt="Zakeesha Elisha L. Canubas" class="profile-img">
+      <h1>Hello, I'm <span style="color:#1e90ff">Zakeesha Elisha L. Canubas</span></h1>
+      <p><strong>3rd Year IT Student | Aspiring Front-End Developer</strong></p>
+      <p>I love building clean, modern, and user-friendly web interfaces. Currently learning and improving my skills in HTML, CSS, JavaScript, and modern frameworks.</p>
+    </div>
+  </section>
 
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-                <span class="navbar-toggler-icon"></span>
-            </button>
+  <!-- About -->
+  <section id="about" class="py-5">
+    <div class="container">
+      <div class="glass shadow-lg p-4">
+        <h2 class="text-center mb-4">About Me</h2>
+        <p class="about-text">Hi! I'm <strong>Zakeesha Elisha L. Canubas</strong>, a 3rd Year IT student at the <strong>Polytechnic University of the Philippines</strong>.</p>
+        <p class="about-text">I have a strong interest in <b>front-end development</b> and modern web technologies. I love building clean, user-friendly, and responsive web interfaces.</p>
+        <p class="about-text">Currently learning <strong>HTML, CSS, JavaScript</strong>, and exploring frameworks to become a professional front-end developer.</p>
+      </div>
+    </div>
+  </section>
 
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav ms-auto">
-                    <li class="nav-item"><a class="nav-link active" href="#home">Home</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#cv">CV</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#portfolio">Portfolio</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
-                </ul>
+  <!-- CV -->
+  <section id="cv">
+    <div class="glass">
+      <h2>Curriculum Vitae</h2>
+      <p>Download my CV here:</p>
+      <a href="cv.pdf" target="_blank" class="contact-links"><i class="fas fa-file-alt"></i> View CV</a>
+    </div>
+  </section>
+
+  <!-- Portfolio -->
+  <section id="portfolio" class="py-5">
+    <div class="container">
+      <h2 class="text-center mb-4">My Projects</h2>
+      <div class="row justify-content-center">
+        <div class="col-md-4 col-sm-6 mb-4">
+          <div class="card glass shadow-sm">
+            <div class="card-body">
+              <h5 class="card-title">eQash Banking System</h5>
+              <p class="card-text">A secure web banking system with deposits, withdrawals, transfers, balance tracking, and admin management.</p>
+              <a href="https://github.com/ishaec/eQash" target="_blank" class="project-link">🔗 View Project</a>
             </div>
+          </div>
         </div>
-    </nav>
+      </div>
+    </div>
+  </section>
 
+  <!-- Contact -->
+  <section id="contact">
+    <div class="glass">
+      <h2>Contact Me</h2>
+      <p>Feel free to reach out via email or connect with me on social media.</p>
+      <div class="contact-links">
+        <a href="mailto:zakeeshaelishacanubas@gmail.com"><i class="fas fa-envelope"></i> Email</a>
+        <a href="https://github.com/ishaec" target="_blank"><i class="fab fa-github"></i> GitHub</a>
+        <a href="https://m.me/zakeeshaelishacanubas" target="_blank"><i class="fab fa-facebook-messenger"></i> Messenger</a>
+        <a href="https://facebook.com/zakeeshaelishacanubas" target="_blank"><i class="fab fa-facebook"></i> Facebook</a>
+      </div>
+    </div>
+  </section>
 
-
-
-    <section id="home">
-        <div class="glass">
-            <img src="images/me.jpg" alt="Zakeesha Elisha L. Canubas" class="profile-img">
-            <h1>Hello, I'm <span style="color:#1e90ff;">Zakeesha Elisha L. Canubas</span></h1>
-            <p><strong>3rd Year IT Student | Aspiring Front-End Developer</strong></p>
-            <p>I love building clean, modern, and user-friendly web interfaces. Currently learning and improving my
-                skills in HTML, CSS, JavaScript, and modern frameworks to become a professional front-end developer.
-            </p>
+  <!-- Footer -->
+  <footer>
+    <div class="footer-container">
+      <div class="footer-section">
+        <h3>Zakeesha Elisha L. Canubas</h3>
+        <p><strong>Aspiring Front-End Developer</strong></p>
+        <p>3rd Year IT student passionate about building clean, modern, and user-friendly web interfaces.</p>
+      </div>
+      <div class="footer-section">
+        <h3>Quick Links</h3>
+        <ul>
+          <li><a href="#about">About</a></li>
+          <li><a href="#cv">CV</a></li>
+          <li><a href="#portfolio">Portfolio</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </div>
+      <div class="footer-section">
+        <h3>Connect</h3>
+        <div class="social-icons">
+          <a href="mailto:zakeeshaelishacanubas@gmail.com"><i class="fas fa-envelope"></i></a>
+          <a href="https://github.com/ishaec" target="_blank"><i class="fab fa-github"></i></a>
+          <a href="https://facebook.com/zakeeshaelishacanubas" target="_blank"><i class="fab fa-facebook"></i></a>
+          <a href="https://m.me/zakeeshaelishacanubas" target="_blank"><i class="fab fa-facebook-messenger"></i></a>
         </div>
-    </section>
+      </div>
+    </div>
+    <div class="footer-bottom"><p>© 2025 Zakeesha Elisha L. Canubas. All rights reserved.</p></div>
+  </footer>
 
-    <section id="about" class="py-5">
-        <div class="container">
-            <div class="card glass-card shadow-lg p-4">
-                <h2 class="text-center mb-4">About Me</h2>
-                <p class="lead">
-                    Hi! I'm <strong>Zakeesha Elisha L. Canubas</strong>, a 3rd Year IT student at the
-                    <strong>Polytechnic University of the Philippines</strong>.
-                </p>
-                <p class="lead">
-                    I have a strong interest in <b>front-end development</b> and modern web technologies.
-                    I love building clean, user-friendly, and responsive web interfaces.
-                </p>
-                <p class="lead">
-                    Currently, I am continuously learning and improving my skills in
-                    <strong>HTML, CSS, JavaScript</strong>, and exploring frameworks to become a
-                    professional front-end developer.
-                </p>
-            </div>
-        </div>
-    </section>
-
-    <style>
-        .glass-card {
-            background: rgba(255, 255, 255, 0.15);
-            backdrop-filter: blur(10px);
-            border-radius: 15px;
-            border: 1px solid rgba(255, 255, 255, 0.2);
-        }
-
-        .about-text {
-            font-size: 1.1rem;
-        }
-
-        @media (max-width: 992px) {
-
-            .about-text {
-                font-size: 1rem;
-            }
-        }
-
-        @media (max-width: 768px) {
-
-            .about-text {
-                font-size: 0.9rem;
-            }
-        }
-
-        @media (max-width: 576px) {
-
-            .about-text {
-                font-size: 0.85rem;
-            }
-        }
-    </style>
-
-
-
-
-    <section id="cv">
-        <div class="glass">
-            <h2>Curriculum Vitae</h2>
-            <p>
-                Download my CV here:
-                <br><br>
-                <a href="cv.pdf" target="_blank" class="contact-links"><i class="fas fa-file-alt"></i>
-                    View CV</a>
-            </p>
-        </div>
-    </section>
-
-    <section id="portfolio">
-        <div class="glass">
-            <h2>My Projects</h2>
-            <div class="portfolio-grid">
-                <div class="card">
-                    <h3>eQash Online Banking</h3>
-                    <p>Secure web banking system with deposits, withdrawals, transfers, and admin
-                        management.</p>
-                    <a href="https://github.com/yourusername/eQash" target="_blank">🔗 View on
-                        GitHub</a>
-                </div>
-    </section>
-
-    <section id="contact">
-        <div class="glass">
-            <h2>Contact Me</h2>
-            <p>Feel free to reach out via email or connect with me on social media.</p>
-            <div class="contact-links">
-                <a href="https://mail.google.com/mail/?view=cm&fs=1&to=zakeeshaelishacanubas@gmail.com"
-                    target="_blank"><i class="fas fa-envelope"></i> Email</a>
-                <a href="https://github.com/ishaec" target="_blank"><i class="fab fa-github"></i>
-                    GitHub</a>
-                <a href="https://m.me/zakeeshaelishacanubas" target="_blank"><i class="fab fa-facebook-messenger"></i>
-                    Messenger</a>
-                <a href="https://facebook.com/zakeeshaelishacanubas" target="_blank"><i class="fab fa-facebook"></i>
-                    Facebook</a>
-            </div>
-    </section>
-
-    <script>
-        const observer = new IntersectionObserver(entries => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('visible');
-                } else {
-                    entry.target.classList.remove('visible');
-                }
-            });
-        }, { threshold: 0.2 });
-
-        document.querySelectorAll('.glass, .card, .profile-img').forEach(el => {
-            observer.observe(el);
-        });
-    </script>
-    <footer>
-        <div class="footer-container">
-            <div class="footer-section">
-                <h3>Zakeesha Elisha L. Canubas</h3>
-                <p><strong>Aspiring Front-End Developer</strong></p>
-                <p>3rd Year IT student passionate about building clean, modern, and user-friendly web
-                    interfaces.</p>
-            </div>
-
-            <div class="footer-section">
-                <h3>Quick Links</h3>
-                <ul>
-                    <li><a href="#about">About</a></li>
-                    <li><a href="#cv">CV</a></li>
-                    <li><a href="#portfolio">Portfolio</a></li>
-                    <li><a href="#contact">Contact</a></li>
-                </ul>
-            </div>
-
-            <div class="footer-section">
-                <h3>Connect</h3>
-                <div class="social-icons">
-                    <a href="mailto:zakeeshaelishacanubas@gmail.com" target="_blank"><i class="fas fa-envelope"></i></a>
-                    <a href="https://github.com/ishaec" target="_blank"><i class="fab fa-github"></i></a>
-                    <a href="https://facebook.com/zakeeshaelishacanubas" target="_blank"><i
-                            class="fab fa-facebook"></i></a>
-                    <a href="https://m.me/zakeeshaelishacanubas" target="_blank"><i
-                            class="fab fa-facebook-messenger"></i></a>
-                </div>
-            </div>
-        </div>
-
-        <div class="footer-bottom">
-            <p>© 2025 Zakeesha Elisha L. Canubas. All rights reserved.</p>
-        </div>
-    </footer>
-
-
+  <!-- Animations -->
+  <script>
+    const observer=new IntersectionObserver(entries=>{
+      entries.forEach(e=>e.isIntersecting?e.target.classList.add('visible'):e.target.classList.remove('visible'))
+    },{threshold:.2});
+    document.querySelectorAll('.glass,.card,.profile-img').forEach(el=>observer.observe(el));
+  </script>
 </body>
-
 </html>
