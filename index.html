@@ -6,6 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Zakeesha's Portfolio</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
     <style>
         * {
             margin: 0;
@@ -113,7 +116,6 @@
             transform: translateY(-10px);
         }
 
-        /* 🔹 Profile image animation */
         .profile-img {
             width: 150px;
             height: 150px;
@@ -234,7 +236,6 @@
             backdrop-filter: blur(15px);
             display: flex;
             align-items: center;
-            /* align logo + links vertically */
             justify-content: center;
             padding: 1rem;
             z-index: 1000;
@@ -255,71 +256,98 @@
             height: 40px;
             width: 40px;
             margin-right: 10px;
-            border-radius: 8px;        }
+            border-radius: 8px;
+        }
+
+        .navbar .navbar-brand {
+            font-size: 1.4rem;
+            color: #004080 !important;
+            text-shadow: 0 1px 2px rgba(255, 255, 255, 0.6);
+        }
+
+        .navbar .nav-link {
+            color: #004080 !important;
+            font-weight: 600;
+            margin-left: 1rem;
+            transition: color 0.3s ease, transform 0.2s ease;
+        }
+
+        .navbar .nav-link:hover {
+            color: #1e90ff !important;
+            transform: translateY(-2px);
+        }
     </style>
 </head>
 
 <body>
 
-    <nav>
-        <a href="#home" class="logo">
-            <img src="logo.png" alt="IshaEC Logo">
-            ishaec;
-        </a>
-        <a href="#home">Home</a>
-        <a href="#about">About</a>
-        <a href="#cv">CV</a>
-        <a href="#portfolio">Portfolio</a>
-        <a href="#contact">Contact</a>
+    <nav class="navbar navbar-expand-lg fixed-top shadow-sm"
+        style="background: rgba(255, 255, 255, 0.2); backdrop-filter: blur(15px);">
+        <div class="container">
+            <a class="navbar-brand fw-bold text-primary" href="#">
+                <img src="logo.png" alt="Logo" width="35" height="35" class="me-2">
+                ishaec;
+            </a>
+
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link active" href="#home">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#cv">CV</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#portfolio">Portfolio</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
+                </ul>
+            </div>
+        </div>
     </nav>
+
+
 
 
     <section id="home">
         <div class="glass">
-            <img src="me.jpg" alt="Zakeesha Elisha L. Canubas" class="profile-img">
+            <img src="images/me.jpg" alt="Zakeesha Elisha L. Canubas" class="profile-img">
             <h1>Hello, I'm <span style="color:#1e90ff;">Zakeesha Elisha L. Canubas</span></h1>
-            <p>3rd Year IT Student | Aspiring Front-End Developer</p>
+            <p><strong>3rd Year IT Student | Aspiring Front-End Developer</strong></p>
             <p>I love building clean, modern, and user-friendly web interfaces. Currently learning and improving my
                 skills in HTML, CSS, JavaScript, and modern frameworks to become a professional front-end developer.
             </p>
         </div>
     </section>
 
-    <section id="about">
-        <div class="glass">
-            <section id="about">
-                <div class="glass">
-                    <h2>About Me</h2>
-                    <p style="margin-bottom: 1rem;">
-                        Hi! I'm <strong>Zakeesha Elisha L. Canubas</strong>, a 3rd Year IT student at the Polytechnic
-                        University of the Philippines.
-                        I have a strong interest in <strong>front-end development</strong> and modern web technologies.
-                    </p>
+    <section id="about" class="py-5">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-8 col-md-10">
 
-                    <p style="margin-bottom: 1rem;">
-                        I enjoy turning ideas into interactive and visually appealing websites that provide meaningful
-                        user experiences.
-                        My passion lies in building clean, responsive, and user-friendly designs that connect people
-                        with technology.
-                    </p>
+                    <div class="glass">
+                        <h2 class="fw-bold mb-4 text-primary text-center">About Me</h2>
 
-                    <p style="margin-bottom: 1rem;">
-                        Currently, I’m honing my skills in <strong>HTML, CSS, JavaScript</strong>, and exploring
-                        frameworks that will help me grow as a developer.
-                        My ultimate goal is to become a professional front-end developer and contribute to impactful
-                        projects.
-                    </p>
+                        <p class="lead text-dark">
+                            Hi! I'm <strong>Zakeesha Elisha L. Canubas</strong>, a 3rd Year IT student
+                            at the <strong>Polytechnic University of the Philippines</strong>.
+                        </p>
+                        <p class="lead text-dark">
+                            I have a strong interest in <b>front-end development</b> and modern web
+                            technologies. I love building clean, user-friendly, and responsive web interfaces.
+                        </p>
+                        <p class="lead text-dark">
+                            Currently, I am continuously learning and improving my skills in
+                            <strong>HTML, CSS, JavaScript</strong>, and exploring frameworks to become a
+                            professional front-end developer.
+                        </p>
+                    </div>
 
-                    <p>
-                        Outside of coding, I love learning new tools, staying updated with tech trends, and continuously
-                        improving myself
-                        as a student and future IT professional.
-                    </p>
                 </div>
-            </section>
-
+            </div>
         </div>
     </section>
+
+
 
     <section id="cv">
         <div class="glass">
@@ -327,7 +355,8 @@
             <p>
                 Download my CV here:
                 <br><br>
-                <a href="cv.pdf" target="_blank" class="contact-links"><i class="fas fa-file-alt"></i> View CV</a>
+                <a href="cv.pdf" target="_blank" class="contact-links"><i class="fas fa-file-alt"></i>
+                    View CV</a>
             </p>
         </div>
     </section>
@@ -338,8 +367,10 @@
             <div class="portfolio-grid">
                 <div class="card">
                     <h3>eQash Online Banking</h3>
-                    <p>Secure web banking system with deposits, withdrawals, transfers, and admin management.</p>
-                    <a href="https://github.com/yourusername/eQash" target="_blank">🔗 View on GitHub</a>
+                    <p>Secure web banking system with deposits, withdrawals, transfers, and admin
+                        management.</p>
+                    <a href="https://github.com/yourusername/eQash" target="_blank">🔗 View on
+                        GitHub</a>
                 </div>
     </section>
 
@@ -350,7 +381,8 @@
             <div class="contact-links">
                 <a href="https://mail.google.com/mail/?view=cm&fs=1&to=zakeeshaelishacanubas@gmail.com"
                     target="_blank"><i class="fas fa-envelope"></i> Email</a>
-                <a href="https://github.com/ishaec" target="_blank"><i class="fab fa-github"></i> GitHub</a>
+                <a href="https://github.com/ishaec" target="_blank"><i class="fab fa-github"></i>
+                    GitHub</a>
                 <a href="https://m.me/zakeeshaelishacanubas" target="_blank"><i class="fab fa-facebook-messenger"></i>
                     Messenger</a>
                 <a href="https://facebook.com/zakeeshaelishacanubas" target="_blank"><i class="fab fa-facebook"></i>
@@ -378,7 +410,8 @@
             <div class="footer-section">
                 <h3>Zakeesha Elisha L. Canubas</h3>
                 <p><strong>Aspiring Front-End Developer</strong></p>
-                <p>3rd Year IT student passionate about building clean, modern, and user-friendly web interfaces.</p>
+                <p>3rd Year IT student passionate about building clean, modern, and user-friendly web
+                    interfaces.</p>
             </div>
 
             <div class="footer-section">
@@ -411,6 +444,5 @@
 
 
 </body>
-
 
 </html>
