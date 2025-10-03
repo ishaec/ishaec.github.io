@@ -310,7 +310,7 @@
 
     <section id="home">
         <div class="glass">
-            <img src="me.jpg" alt="Zakeesha Elisha" class="profile-img">
+            <img src="images/me.jpg" alt="Zakeesha Elisha L. Canubas" class="profile-img">
             <h1>Hello, I'm <span style="color:#1e90ff;">Zakeesha Elisha L. Canubas</span></h1>
             <p><strong>3rd Year IT Student | Aspiring Front-End Developer</strong></p>
             <p>I love building clean, modern, and user-friendly web interfaces. Currently learning and improving my
@@ -321,31 +321,59 @@
 
     <section id="about" class="py-5">
         <div class="container">
-            <div class="row justify-content-center">
-                <div class="col-lg-8 col-md-10">
-
-                    <div class="glass">
-                        <h2 class="fw-bold mb-4 text-primary text-center">About Me</h2>
-
-                        <p class="lead text-dark">
-                            Hi! I'm <strong>Zakeesha Elisha L. Canubas</strong>, a 3rd Year IT student
-                            at the <strong>Polytechnic University of the Philippines</strong>.
-                        </p>
-                        <p class="lead text-dark">
-                            I have a strong interest in <b>front-end development</b> and modern web
-                            technologies. I love building clean, user-friendly, and responsive web interfaces.
-                        </p>
-                        <p class="lead text-dark">
-                            Currently, I am continuously learning and improving my skills in
-                            <strong>HTML, CSS, JavaScript</strong>, and exploring frameworks to become a
-                            professional front-end developer.
-                        </p>
-                    </div>
-
-                </div>
+            <div class="card glass-card shadow-lg p-4">
+                <h2 class="text-center mb-4">About Me</h2>
+                <p class="lead">
+                    Hi! I'm <strong>Zakeesha Elisha L. Canubas</strong>, a 3rd Year IT student at the
+                    <strong>Polytechnic University of the Philippines</strong>.
+                </p>
+                <p class="lead">
+                    I have a strong interest in <b>front-end development</b> and modern web technologies.
+                    I love building clean, user-friendly, and responsive web interfaces.
+                </p>
+                <p class="lead">
+                    Currently, I am continuously learning and improving my skills in
+                    <strong>HTML, CSS, JavaScript</strong>, and exploring frameworks to become a
+                    professional front-end developer.
+                </p>
             </div>
         </div>
     </section>
+
+    <style>
+        .glass-card {
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(10px);
+            border-radius: 15px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .about-text {
+            font-size: 1.1rem;
+        }
+
+        @media (max-width: 992px) {
+
+            .about-text {
+                font-size: 1rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+
+            .about-text {
+                font-size: 0.9rem;
+            }
+        }
+
+        @media (max-width: 576px) {
+
+            .about-text {
+                font-size: 0.85rem;
+            }
+        }
+    </style>
+
 
 
 
@@ -446,4 +474,3 @@
 </body>
 
 </html>
-
