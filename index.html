@@ -64,6 +64,13 @@
     }
 
     /* Cards */
+    .project-card {
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
     .card.glass {
       transition: transform 0.3s ease;
     }
@@ -158,17 +165,17 @@
         font-size: 0.85rem;
       }
     }
+
     .glass-card {
-  background: rgba(255, 255, 255, 0.15);
-  backdrop-filter: blur(12px);
-  border-radius: 15px;
-  transition: transform 0.3s ease;
-}
+      background: rgba(255, 255, 255, 0.15);
+      backdrop-filter: blur(12px);
+      border-radius: 15px;
+      transition: transform 0.3s ease;
+    }
 
-.glass-card:hover {
-  transform: translateY(-5px);
-}
-
+    .glass-card:hover {
+      transform: translateY(-5px);
+    }
   </style>
 </head>
 
@@ -240,63 +247,73 @@
   <section id="portfolio" class="py-5">
     <div class="container">
       <h2 class="text-center mb-4">My Projects</h2>
-      <div class="row justify-content-center">
 
-        <!-- eQash Banking System -->
-        <div class="container mt-5">
-  <div class="row g-4 justify-content-center">
+      <!-- ONE ROW ONLY -->
+      <div class="row g-4 justify-content-center">
 
-    <div class="col-md-4">
-      <div class="card glass-card">
-        <div class="card-body text-center">
-          <h5>eQash Banking System</h5>
-          <p>A secure web banking system with deposits, withdrawals, transfers, balance tracking, and admin management.</p>
-          <a href="https://ishaec.github.io/eQash" target="_blank" class="btn btn-primary btn-sm">
-            View Project
-          </a>
+        <div class="col-lg-4 col-md-6">
+          <div class="card glass-card">
+            <div class="card-body text-center">
+              <h5>eQash Banking System</h5>
+              <p>A secure web banking system with deposits, withdrawals, transfers, balance tracking, and admin
+                management.</p>
+              <a href="https://ishaec.github.io/eQash" target="_blank" class="btn btn-primary btn-sm">View Project</a>
+            </div>
+          </div>
         </div>
+
+        <div class="col-lg-4 col-md-6">
+          <div class="card glass-card">
+            <div class="card-body text-center">
+              <h5>iPhone 13 Showcase</h5>
+              <p>A modern, interactive showcase of iPhone 13 with animations and responsive design.</p>
+              <a href="https://ishaec.github.io/iphone13-showcase" target="_blank" class="btn btn-primary btn-sm">View
+                Project</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-lg-4 col-md-6">
+          <div class="card glass-card">
+            <div class="card-body text-center">
+              <h5>Switzerland Showcase</h5>
+              <p>An interactive showcase highlighting Switzerland's landscapes, culture, and tourist spots.</p>
+              <a href="https://ishaec.github.io/switzerland-showcase/" target="_blank"
+                class="btn btn-primary btn-sm">View Project</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-lg-4 col-md-6">
+          <div class="card glass-card">
+            <div class="card-body text-center">
+              <h5>Wattpad Stories Gallery</h5>
+              <p>A responsive multi-author Wattpad gallery with search, filters, theme toggle, and animations.</p>
+              <a href="https://ishaec.github.io/wattpad-stories-gallery/" target="_blank"
+                class="btn btn-primary btn-sm">View Project</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- ✅ FIXED: Disney Gallery is now aligned -->
+        <div class="col-lg-4 col-md-6">
+          <div class="card glass-card">
+            <div class="card-body text-center">
+              <h5>Disney Gallery</h5>
+              <p>
+                An HTML website that consumes a free public API returning JSON data,
+                featuring responsive layouts and real-time content rendering.
+              </p>
+              <a href="https://ishaec.github.io/disney-gallery/" target="_blank" class="btn btn-primary btn-sm">
+                View Project
+              </a>
+            </div>
+          </div>
+        </div>
+
       </div>
     </div>
-
-    <div class="col-md-4">
-      <div class="card glass-card">
-        <div class="card-body text-center">
-          <h5>iPhone 13 Showcase</h5>
-          <p>A modern, interactive showcase of iPhone 13 with animations and responsive design.</p>
-          <a href="https://ishaec.github.io/iphone13-showcase" target="_blank" class="btn btn-primary btn-sm">
-            View Project
-          </a>
-        </div>
-      </div>
-    </div>
-
-    <div class="col-md-4">
-      <div class="card glass-card">
-        <div class="card-body text-center">
-          <h5>Switzerland Showcase</h5>
-          <p>An interactive showcase highlighting Switzerland's landscapes, culture, and tourist spots with a responsive design.</p>
-          <a href="https://ishaec.github.io/switzerland-showcase/" target="_blank" class="btn btn-primary btn-sm">
-            View Project
-          </a>
-        </div>
-      </div>
-    </div>
-
-    <div class="col-md-4">
-      <div class="card glass-card">
-        <div class="card-body text-center">
-          <h5>Wattpad Stories Gallery</h5>
-          <p>A responsive multi-author Wattpad gallery built with HTML, CSS, JavaScript, and Bootstrap. Includes search, filters, theme toggle, and animations.</p>
-          <a href="https://ishaec.github.io/wattpad-stories-gallery/" target="_blank" class="btn btn-primary btn-sm">
-            View Project
-          </a>
-        </div>
-      </div>
-    </div>
-
-  </div>
-</div>
-
+  </section>
 
   <footer>
     <div class="container d-flex flex-wrap justify-content-between gap-4">
